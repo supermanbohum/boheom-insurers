@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1746c9">
+<meta name="description" content="보험사 39곳 전산·고객센터·청구팩스·약관·청구서 바로가기 — 보험슈퍼맨">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>보험슈퍼맨 보험사 바로가기</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: one-column phone-first app. Sticky blue header, scrolling list, fixed bottom tab bar. Numbers set in mono for scan-and-dial. */
+:root{
+  --bg:#f3f5f9; --card:#ffffff; --fg:#141a26; --mute:#6b7384; --line:#e2e6ee;
+  --brand:#1746c9; --brand-fg:#ffffff; --brand-soft:#e7edfd;
+  --ok:#0e8f5e; --ok-fg:#ffffff; --warn:#b45309; --warn-soft:#fdf1dc;
+  --font:"Noto Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono","SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0f1420; --card:#1a2131; --fg:#eef1f7; --mute:#97a0b3; --line:#2a3344;
+  --brand:#5b86f5; --brand-fg:#0b1222; --brand-soft:#1f2c4d; --ok:#2fbf84; --ok-fg:#07160f; --warn:#f0b35b; --warn-soft:#3a2d16; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0f1420; --card:#1a2131; --fg:#eef1f7; --mute:#97a0b3; --line:#2a3344;
+  --brand:#5b86f5; --brand-fg:#0b1222; --brand-soft:#1f2c4d; --ok:#2fbf84; --ok-fg:#07160f; --warn:#f0b35b; --warn-soft:#3a2d16; color-scheme:dark }
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--brand)}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.view{display:none;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+.view.on{display:block}
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--brand);color:var(--brand-fg);padding-block:14px 12px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.hdr h1{font-size:19px;font-weight:900;letter-spacing:-.01em;margin:0;text-wrap:balance}
+.hdr p{margin:2px 0 0;font-size:12px;opacity:.85}
+.hdr .back{display:inline-block;font-size:13px;opacity:.9;margin-bottom:4px}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px}
+.search{width:100%;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:12px;padding:11px 14px;font-size:14px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-block:10px 4px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;font-size:12px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--mute);font-weight:500}
+.chip.on{background:var(--brand);color:var(--brand-fg);border-color:var(--brand)}
+.list{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.card{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 12px;min-width:0;text-align:left;width:100%}
+.lg{flex:0 0 42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;color:#fff;letter-spacing:-.02em}
+.card .tx{flex:1;min-width:0}
+.card b{display:block;font-size:14.5px;font-weight:700}
+.card small{display:block;font-size:11.5px;color:var(--mute);font-family:var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card .st{flex:0 0 auto;font-size:18px;color:var(--mute);padding:4px}
+.card .st.on{color:#f5a623}
+.empty{text-align:center;color:var(--mute);padding:40px 0;font-size:13px}
+.sec{font-size:12px;font-weight:700;color:var(--mute);letter-spacing:.04em;text-transform:uppercase;margin:16px 0 8px}
+/* detail */
+.hero{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px}
+.hero .lg{flex-basis:52px;height:52px;font-size:14px}
+.hero b{display:block;font-size:17px;font-weight:900}
+.hero small{display:block;color:var(--mute);font-size:11.5px;word-break:break-all}
+.hero .st{margin-left:auto;font-size:24px;color:var(--mute)}
+.hero .st.on{color:#f5a623}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+.tile{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;min-width:0}
+.tile .t{font-size:11px;color:var(--mute)}
+.tile .v{font-size:15px;font-weight:700;margin-top:3px;font-family:var(--mono);font-variant-numeric:tabular-nums;word-break:break-all}
+.tile.p{background:var(--brand);border-color:var(--brand);color:var(--brand-fg)}.tile.p .t{color:inherit;opacity:.8}.tile.p .v{font-family:var(--font)}
+.tile.g{background:var(--ok);border-color:var(--ok);color:var(--ok-fg)}.tile.g .t{color:inherit;opacity:.85}.tile.g .v{font-family:var(--font)}
+.tile.dis{opacity:.5}
+.tile .act{display:flex;gap:6px;margin-top:8px}
+.tile .act button{font-size:11px;padding:5px 9px;border-radius:8px;background:var(--brand-soft);color:var(--brand);font-weight:600}
+.row{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13.5px;min-width:0}
+.row .r{margin-left:auto;font-size:12px;color:var(--brand);font-weight:700;flex:0 0 auto}
+.row .bd{font-size:10px;background:var(--warn-soft);color:var(--warn);padding:2px 7px;border-radius:6px;font-weight:600}
+.rows{display:flex;flex-direction:column;gap:8px}
+.note{font-size:12px;color:var(--mute);margin-top:8px;word-break:break-all}
+/* tools */
+.tool{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:9px}
+.tool b{display:block;font-size:13.5px;margin-bottom:8px}
+.tool .ch{display:flex;flex-wrap:wrap;gap:6px}
+.tool .ch a{font-size:12px;padding:7px 11px;border-radius:9px;background:var(--brand-soft);color:var(--brand);font-weight:500}
+.tool.hl{background:var(--brand-soft);border-color:transparent}
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--card);border-top:1px solid var(--line);display:flex;
+  padding-bottom:env(safe-area-inset-bottom,0px);padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px))}
+.nav button{flex:1;padding:9px 0 8px;font-size:11px;color:var(--mute);display:flex;flex-direction:column;align-items:center;gap:3px;font-weight:500}
+.nav button .ic{width:22px;height:22px;border-radius:7px;background:var(--line)}
+.nav button.on{color:var(--brand)}.nav button.on .ic{background:var(--brand)}
+.toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:9px 16px;border-radius:999px;font-size:13px;z-index:20;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+@media (min-width:720px){ body{max-width:560px;margin:0 auto} .nav{max-width:560px;margin:0 auto} }
+</style>
+
+<section id="v-list" class="view on">
+  <header class="hdr"><h1>보험사 바로가기</h1><p>전산 · 고객센터 · 청구팩스 · 약관 · 청구서 한 번에</p></header>
+  <div class="wrap">
+    <input id="q" class="search" type="search" placeholder="보험사 이름 검색 (예: 메리츠, KB)" autocomplete="off">
+    <div class="chips" id="chips"></div>
+    <div class="list" id="list"></div>
+  </div>
+</section>
+
+<section id="v-detail" class="view">
+  <header class="hdr"><a class="back" href="#list">‹ 보험사 목록</a><h1 id="d-name"></h1><p id="d-sub"></p></header>
+  <div class="wrap" id="d-body"></div>
+</section>
+
+<section id="v-tools" class="view">
+  <header class="hdr"><h1>업무 도구</h1><p>설계사가 매일 쓰는 외부 링크 모음</p></header>
+  <div class="wrap" id="t-body"></div>
+</section>
+
+<nav class="nav">
+  <button id="nb-list" data-go="list"><span class="ic"></span>보험사</button>
+  <button id="nb-fav" data-go="fav"><span class="ic"></span>즐겨찾기</button>
+  <button id="nb-tools" data-go="tools"><span class="ic"></span>업무도구</button>
+</nav>
+<div class="toast" id="toast"></div>
+
+<script>
+const INS = [{"n": "삼성화재", "c": "손해보험", "p": "https://erp.samsungfire.com", "b": "크롬/엣지", "t1": "1588-5114", "t2": "1566-0553", "t3": "1899-5005", "fx": "0505-162-0872", "tm": "https://www.samsungfire.com/page/VH.REIF0011.do", "cf": "https://drive.google.com/file/d/1j99Fa5eGfBDJSBVL2uM8mix5jqF5dn3i/view", "nt": "", "dt": "https://drive.google.com/file/d/1IIB4J-gBEtYpaxEWGvMdCNmRkJfStkmj/view"}, {"n": "메리츠화재", "c": "손해보험", "p": "http://sales.meritzfire.com", "b": "크롬/엣지", "t1": "1566-7711", "t2": "1577-7711", "t3": "02-3786-2777", "fx": "0505-021-3400", "tm": "https://www.meritzfire.com/disclosure/product-announcement/product-list.do", "cf": "https://drive.google.com/file/d/1BRrqHi1lIisWwpwAirTmu26s3wJmnLus/view", "nt": "", "dt": "https://drive.google.com/file/d/1a5vNbiB5siJDAsrOHq18HKJUqbCAENg4/view"}, {"n": "DB손해보험", "c": "손해보험", "p": "https://www.mdbins.com", "b": "크롬/엣지", "t1": "1588-0100", "t2": "1566-0757", "t3": "02-2262-1241", "fx": "0505-181-4862", "tm": "https://www.idbins.com/FWMAIV1534.do", "cf": "https://drive.google.com/file/d/1m5HurA0NkjcnrA8cISgxFeT6MiUm1Yf1/view", "nt": "", "dt": "https://drive.google.com/file/d/1B7FG5kYhdH69A7StQFTzSG43PJxJZVli/view"}, {"n": "KB손해보험", "c": "손해보험", "p": "https://nsales.kbinsure.co.kr/", "b": "크롬/엣지", "t1": "1544-0114", "t2": "1544-0019", "t3": "1544-8119", "fx": "0505-136-6500", "tm": "https://www.kbinsure.co.kr/CG802030001.ec", "cf": "https://drive.google.com/file/d/1fKwGmSVV3IYPwnZ95Dx2dKkxZTY9YbVE/view", "nt": "", "dt": "https://drive.google.com/file/d/11-_IGMnnSEB7mzTOjCvAV-kJ5UZE4-FX/view"}, {"n": "현대해상", "c": "손해보험", "p": "https://sp.hi.co.kr", "b": "크롬/엣지", "t1": "1588-5656", "t2": "1577-3223", "t3": "02-2628-4567", "fx": "0507-774-6060", "tm": "https://www.hi.co.kr/serviceAction.do?view=bin%2FPA%2F03%2FHHPA03010M", "cf": "https://drive.google.com/file/d/1GLDWITf7O1W-xNszfV9oajHqTxpcbRgv/view", "nt": "", "dt": "https://drive.google.com/file/d/1AvaFhfX_3rq3fTzjUyTPg2Hjwuirpm4F/view"}, {"n": "한화손해보험", "c": "손해보험", "p": "http://portal.hwgeneralins.com", "b": "크롬/엣지", "t1": "1566-8000", "t2": "1670-1882", "t3": "02-316-0111", "fx": "0502-779-1004", "tm": "https://www.hwgeneralins.com/notice/ir/product-ing01.do", "cf": "https://drive.google.com/file/d/1qSt7pUiXNh_IruI7KUk4c_w_0tHhcrpz/view", "nt": "간병인사용확인서: https://drive.google.com/file/d/1gWh3panTtHqimOVBcy3qY6rQqC2kWfgm/view", "dt": "https://drive.google.com/file/d/1Y20iefe4PNJsquzDtqPed73j6j9xU7Qa/view"}, {"n": "롯데손해보험", "c": "손해보험", "p": "http://lottero.lotteins.co.kr", "b": "크롬/엣지", "t1": "1588-3344", "t2": "1600-5182", "t3": "1599-8260", "fx": "0507-333-9999", "tm": "https://www.lotteins.co.kr/web/C/D/H/cdh190.jsp", "cf": "https://drive.google.com/file/d/1kyoHLbzboKmnVnfEnz_m_Z9jRu3NI14v/view", "nt": "", "dt": "https://drive.google.com/file/d/137LBFuL1p1Ric3_CUsExVuuviykWgQA1/view"}, {"n": "흥국화재", "c": "손해보험", "p": "https://sales.heungkukfire.co.kr/", "b": "크롬/엣지", "t1": "1688-1688", "t2": "1688-6997", "t3": "031-786-8088", "fx": "0504-800-0700", "tm": "https://www.heungkukfire.co.kr/FRW/announce/insGoodsGongsiSale.do", "cf": "https://drive.google.com/file/d/1K426vw-3aa3G2G8BpDZ48D3Y-l6Nmeke/view", "nt": "", "dt": "https://drive.google.com/file/d/1NG2R8YiaXrCLaFVeRAU5Q-m1D9OxPXF0/view"}, {"n": "하나손해보험", "c": "손해보험", "p": "https://sfa.saleshana.com/index.html", "b": "크롬/엣지", "t1": "1566-3000", "t2": "02-6299-6821", "t3": "02-6670-8110", "fx": "0504-3764-0765", "tm": "https://www.hanainsure.co.kr/w/disclosure/product/saleProduct", "cf": "https://drive.google.com/file/d/17_J4Sf7K5r7qs-m8PgW5SiYzkJdWVHX0/view", "nt": "", "dt": "https://drive.google.com/file/d/1e7orvblrMvqTcJkuwInPdb__kq7ojEKs/view"}, {"n": "NH농협손해보험", "c": "손해보험", "p": "https://ss.nhfire.co.kr/", "b": "크롬/엣지", "t1": "1644-9000", "t2": "1644-9600", "t3": "1644-0090", "fx": "0505-060-7000", "tm": "https://www.nhfire.co.kr/announce/productAnnounce/retrieveInsuranceProductsAnnounce.nhfire", "cf": "https://drive.google.com/file/d/1yoSLHYJgSNOhTVvKd4DYTuZLZLYrLBd9/view", "nt": "", "dt": "https://drive.google.com/file/d/1TQLvgBF1b63anIkAkOsgf1VvDrHPquiD/view"}, {"n": "라이나손보", "c": "손해보험", "p": "https://ga.linagi.com/", "b": "크롬/엣지", "t1": "1566-5800", "t2": "1566-5800", "t3": "02-6922-5100", "fx": "02-6742-3992", "tm": "https://www.chubb.com/kr-kr/disclosure/product.html", "cf": "https://drive.google.com/file/d/1-KhNl4wkvzJOgUEB-Io5sGioQCgvuFyh/view", "nt": ""}, {"n": "AIG손해보험", "c": "손해보험", "p": "https://ga.aig.co.kr/usrLogin.do", "b": "크롬/엣지", "t1": "1544-2792", "t2": "1544-2792", "t3": "02-2260-6855", "fx": "02-2011-4607", "tm": "https://www.aig.co.kr/wo/dpwot001.html?menuId=MS702", "cf": "https://drive.google.com/file/d/1asRJiyCd2PrYd8MfSUOCcsvqV-n--YGR/view", "nt": "", "dt": "https://drive.google.com/file/d/11C_0rgM4euCKaTvvy_BlBITv98vbFefu/view"}, {"n": "예별손해보험", "c": "손해보험", "p": "https://mganet.mggeneralins.com", "b": "크롬/엣지", "t1": "1588-5959", "t2": "1577-3777", "t3": "02-3788-2261", "fx": "0505-088-1646", "tm": "https://www.mggeneralins.com/PB031210DM.scp?menuId=MN0803006", "cf": "https://drive.google.com/file/d/1lZVta_vUUQZEAIgYnGyGkBNJwmkSMwWe/view", "nt": ""}, {"n": "한화생명", "c": "생명보험", "p": "https://hmp.hanwhalife.com/online/ga", "b": "크롬/엣지", "t1": "1588-6363", "t2": "1800-6633", "t3": "1522-6379", "fx": "고객센터에 전화", "tm": "https://www.hanwhalife.com/main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDGL000", "cf": "https://drive.google.com/file/d/1FKsmRFUqWUn7ickcercCRuN7C4bt916r/view", "nt": "간병인사용확인서: https://drive.google.com/file/d/1Zx9mG3Yv7mwW5cKt9uM4riFukbskgW8G/view ; 브라우저 링크: https://hmp.hanwhalife.com/online/solutions/websquare/websquare.html?w2xPath=%2Fonline%2Fui%2Fuv%2Fgmn%2Fuvgmn505mvw.xml", "dt": "https://drive.google.com/file/d/1lDe_KPLEJuqNd0Ore5wMe4u90-QdOSzr/view"}, {"n": "동양생명", "c": "생명보험", "p": "http://1004.myangel.co.kr", "b": "크롬/엣지", "t1": "1577-1004", "t2": "080-899-1004", "t3": "02-728-9900", "fx": "고객센터에 전화", "tm": "https://www.myangel.co.kr/paging/WE_AC_WEPAAP020100L", "cf": "https://drive.google.com/file/d/1t-La1c_lJX2ImT0ybRK5iEbSsRKACSpO/view", "nt": "간병인사용확인서: https://drive.google.com/file/d/1tblgqK8a3wt2fDGz-OO-Ngn9hlLqj_kB/view", "dt": "https://drive.google.com/file/d/1VSIz98veDZzUuG2z53rKRJ2zVOmPOLHX/view"}, {"n": "교보생명", "c": "생명보험", "p": "https://ga.kyobo.com", "b": "크롬/엣지", "t1": "1588-1001", "t2": "1588-1636", "t3": "02-721-3130", "fx": "고객센터에 전화", "tm": "https://www.kyobo.com/dgt/web/product-official/all-product/search", "cf": "https://drive.google.com/file/d/1Pr6k5qkZCyP7Ihbv1Juc1a5MWs3THHUi/view", "nt": "", "dt": "https://drive.google.com/file/d/10dtGw99zRxRvv62U8bUY3nnlmt5xPajh/view"}, {"n": "삼성생명", "c": "생명보험", "p": "https://ga.samsunglife.com", "b": "크롬/엣지", "t1": "1588-3114", "t2": "1588-3115", "t3": "02-311-4500", "fx": "고객센터에 전화", "tm": "https://www.samsunglife.com/individual/products/disclosure/sales/PDO-PRPRI010110M", "cf": "https://drive.google.com/file/d/1fsElWIjaFefHsuI3FChLVVSkqksYozMq/view", "nt": "간병인사용확인서: https://www.samsunglife.com/e_mail/pdf/document/SAMSUNGLIFE_03867_2.pdf", "dt": "https://drive.google.com/file/d/1hnPId5rP_8J69hS7U1P9nDDMNDMLBAKn/view"}, {"n": "라이나생명", "c": "생명보험", "p": "https://ga.lina.co.kr", "b": "크롬/엣지", "t1": "1588-0058", "t2": "1588-2442", "t3": "02-3781-2006", "fx": "02-6944-1200", "tm": "https://www.lina.co.kr/disclosure/product_list.htm?productState=01&productKind=01", "cf": "https://drive.google.com/file/d/1k7yy3M0KMJh-JZQXkvUMtE8eIWuobHGL/view", "nt": "브라우저 링크: https://ga.lina.co.kr/html/gap/GA/GAZ911M0.html", "dt": "https://drive.google.com/file/d/151pj8sAHzw6Xyj0C2NkzgGxjd601IXVW/view"}, {"n": "KDB생명", "c": "생명보험", "p": "https://sfa.kdblife.co.kr", "b": "크롬", "t1": "1588-4040", "t2": "1588-4040", "t3": "02-6303-2771", "fx": "02-2669-6500", "tm": "https://www.kdblife.co.kr/ajax.do?scrId=HDLMA002M02P", "cf": "https://drive.google.com/file/d/1Hz_rEEel1TdWowg7Y2aBhMRDrScqs5YO/view", "nt": "", "dt": "https://drive.google.com/file/d/1Gb-HNPPRCzUEcvVFN2pry9XhH1Eu162q/view"}, {"n": "iM라이프", "c": "생명보험", "p": "https://fgs.dgbfnlife.com:8443", "b": "크롬", "t1": "1588-4770", "t2": "1588-4770", "t3": "02-2087-9594", "fx": "0505-083-5420", "tm": "https://www.dgbfnlife.com/BA/BA_A020.do", "cf": "https://drive.google.com/file/d/1tGY8JI12MTS8R1LJMbEdjlx9E1kdyOHP/view", "nt": "구 DGB생명", "dt": "https://drive.google.com/file/d/1BElyE7ezy3_7JZy0GibRwmtjmogVEtsL/view"}, {"n": "미래에셋생명", "c": "생명보험", "p": "http://www.loveageplan.com", "b": "크롬/엣지", "t1": "1588-0220", "t2": "1588-0220", "t3": "02-3271-5108", "fx": "고객센터에 전화", "tm": "https://life.miraeasset.com/micro/disclosure/product/PC-HO-080301-000000.do", "cf": "https://drive.google.com/file/d/15LzT84_loJl4tOK1YQ4togAed_tEOACI/view", "nt": "브라우저 링크: https://wga.loveageplan.com", "dt": "https://drive.google.com/file/d/1zWcOa0JizubXyeLE3--5PlghL3Urx_hG/view"}, {"n": "신한라이프", "c": "생명보험", "p": "https://ga.shinhanlife.co.kr", "b": "크롬/엣지", "t1": "1588-5580", "t2": "1522-2285", "t3": "02-3455-4119", "fx": "고객센터에 전화", "tm": "https://www.shinhanlife.co.kr/hp/cdhi0010.do", "cf": "https://drive.google.com/file/d/1lc8ntVCpWPiFIdv6v-ra21Kb7q_-nQ06/view", "nt": "", "dt": "https://drive.google.com/file/d/1J87Op98yzXBxbHg1ibqDZ6wX3iF2RybT/view"}, {"n": "KB라이프", "c": "생명보험", "p": "https://sfa.kblife.co.kr/", "b": "크롬/엣지", "t1": "1588-3374", "t2": "1566-2730", "t3": "1899-3899", "fx": "02-390-4629", "tm": "https://www.kblife.co.kr/?tab=currently-selling", "cf": "https://drive.google.com/file/d/1i-VvJMoBwM8nX3Xz88e2j9dvfGHJnVVB/view", "nt": "", "dt": "https://drive.google.com/file/d/1VQChKb5I4tP4jxjpKuoExSUCm8SAzP6x/view"}, {"n": "DB생명", "c": "생명보험", "p": "http://etopia.idblife.com", "b": "크롬/엣지", "t1": "1588-3131", "t2": "02-6470-7663", "t3": "02-2119-5151", "fx": "0505-129-3134", "tm": "https://www.idblife.com/notice/product/sale", "cf": "https://www.idblife.com/support/guide/acbf_clm", "nt": "청구서는 보험사 홈페이지 안내 페이지", "dt": "https://drive.google.com/file/d/1xKAY6yXs0YdWfn9-U-zmvRqkSuwQIiYN/view"}, {"n": "하나생명", "c": "생명보험", "p": "https://ga.hanalife.co.kr", "b": "크롬/엣지", "t1": "1577-1112", "t2": "1577-1112", "t3": "02-3709-8602~3", "fx": "고객센터에 전화", "tm": "https://hanalife.co.kr/anm/product/allProduct.do?status=on", "cf": "https://drive.google.com/file/d/1IKdEs2e5zlus9lF7pkoiW8ekoNbDJaQI/view", "nt": ""}, {"n": "흥국생명", "c": "생명보험", "p": "https://sales.heungkuklife.co.kr/", "b": "크롬/엣지", "t1": "1588-2288", "t2": "1877-7006", "t3": "031-786-8088", "fx": "고객센터에 전화", "tm": "https://www.heungkuklife.co.kr/front/public/saleProduct.do?searchFlgSale=Y", "cf": "https://drive.google.com/file/d/1ikE6XM8vERcpL9LowLclbnN40XT5kGQn/view", "nt": "간병인사용확인서: https://www.heungkuklife.co.kr/jsps/cyber/file/240517_caregiverUseConfirm.pdf", "dt": "https://drive.google.com/file/d/1rFKuqqbOyPWEmtsnUhiBZmEYQdFtu2yI/view"}, {"n": "ABL생명", "c": "생명보험", "p": "http://ga.abllife.co.kr", "b": "크롬/엣지", "t1": "1588-6500", "t2": "1566-1002", "t3": "02-3787-8583", "fx": "02-3299-5544", "tm": "https://www.abllife.co.kr/st/pban/prdtPban/whlPrdt/whlPrdt1/whlPrdt11?page=index", "cf": "https://drive.google.com/file/d/1gahNsJMIK4ey84Uvr7vzhmXd8kACeeAv/view", "nt": "", "dt": "https://drive.google.com/file/d/1YZmDk5RyJg2U33-Qy1_ohI17VH_o-zKA/view"}, {"n": "IBK연금보험", "c": "생명보험", "p": "https://sf.ibki.co.kr/", "b": "크롬/엣지", "t1": "1577-4117", "t2": "02-2270-1661", "t3": "02-2270-1692", "fx": "02-2270-1577", "tm": "https://www.ibki.co.kr/process/HP_PBANO_PDT_SP_INDV", "cf": "https://www.ibki.co.kr/process/HP_CSCETR_POSN_DOC_INS_LIST?bltb_cod=SC000014&sctn=in&TAB=in", "nt": "청구서는 보험사 홈페이지 서식 목록"}, {"n": "NH농협생명", "c": "생명보험", "p": "https://sfa.nhlife.co.kr:8443/", "b": "크롬/엣지", "t1": "1544-4000", "t2": "1544-4422", "t3": "02-3786-8800", "fx": "02-6971-6040", "tm": "https://www.nhlife.co.kr/ho/on/HOON0004M00.nhl", "cf": "https://drive.google.com/file/d/1ZokHkStvKMfUUUCNM4ajeB_DVzi7h1CT/view", "nt": "", "dt": "https://drive.google.com/file/d/1_U5KmU4ahsepNRaLPhwySgjBLU6qm16V/view"}, {"n": "메트라이프", "c": "생명보험", "p": "http://metplus.metlife.co.kr", "b": "크롬", "t1": "1588-9600", "t2": "1588-9609", "t3": "1899-0751", "fx": "고객센터에 전화", "tm": "https://brand.metlife.co.kr/pn/paReal/insuProductDisclMain.do", "cf": "https://drive.google.com/file/d/1zVzQV5r-6wn1vmqTyqObZONSfqnbZpJd/view", "nt": ""}, {"n": "처브라이프", "c": "생명보험", "p": "http://esmart.chubblife.co.kr", "b": "엣지", "t1": "1599-4600", "t2": "1599-4600", "t3": "1599-4646", "fx": "02-3480-7801", "tm": "https://www.chubblife.co.kr/front/official/sale/list.do", "cf": "https://www.chubblife.co.kr/front/ctmcenter/insurance/listDocu.do", "nt": "청구서는 보험사 홈페이지 서식 목록", "dt": "https://drive.google.com/file/d/15GcGvLKe4aVFVIoS1xnq3EvcQ64jqpHi/view"}, {"n": "푸본현대생명", "c": "생명보험", "p": "https://ez.fubonhyundai.com/", "b": "크롬/엣지", "t1": "1577-3311", "t2": "-", "t3": "080-860-1212", "fx": "0505-106-0311", "tm": "https://www.fubonhyundai.com/#CUSI150102010101", "cf": "https://www.fubonhyundai.com/#CUSI070100000000", "nt": "청구서는 보험사 홈페이지", "dt": "https://drive.google.com/file/d/1t02cyslOwQjdCIa8oljMmwZZ06UugHv3/view"}, {"n": "BNP파리바카디프", "c": "생명보험", "p": "http://ga.cardif.co.kr", "b": "엣지", "t1": "1688-1118", "t2": "1688-1118", "t3": "1577-3435", "fx": "고객센터에 전화", "tm": "https://www.cardif.co.kr/disclosure/papag101.do", "cf": "https://www.cardif.co.kr/customer-center/hcwgi001.do", "nt": "청구서는 보험사 홈페이지"}, {"n": "AIA생명", "c": "생명보험", "p": "https://imap.aia.co.kr", "b": "크롬/엣지", "t1": "1588-9898", "t2": "1588-2513", "t3": "1588-2937", "fx": "02-2021-4540", "tm": "https://www.aia.co.kr/ko/our-products.html", "cf": "https://drive.google.com/file/d/1QQ2sU3-WhjRyN2HI9xwh-kj6HVxWfcUg/view", "nt": "", "dt": "https://drive.google.com/file/d/1fGQzggFlIB_PlvwVGMTeMYjSyjOXe1sa/view"}, {"n": "MG새마을금고", "c": "공제", "p": "https://insure.kfcc.co.kr/", "b": "엣지", "t1": "1599-9010", "t2": "-", "t3": "-", "fx": "02-3016-7674", "tm": "https://insu.kfcc.co.kr/ino/inoGuide.do", "cf": "http://xn--989an19aika.com/pdf/새마을금고.pdf", "nt": "설계사닷컴 자체 호스팅 PDF(1쪽, 사고공제금 청구서)"}, {"n": "더케이(교직원공제회)", "c": "공제", "p": "https://www.ktcu.or.kr/MH/MH-P010M01.do", "b": "엣지", "t1": "1577-3993", "t2": "-", "t3": "-", "fx": "02-3278-9696", "tm": "https://www.ktcu.or.kr/IS/IS-P170M01.do", "cf": "http://xn--989an19aika.com/pdf/교직원공제회.pdf", "nt": "설계사닷컴 자체 호스팅 PDF"}, {"n": "우체국", "c": "공제", "p": "https://epostlife.go.kr/LNLNDM10DM.do", "b": "엣지", "t1": "1599-0100", "t2": "-", "t3": "-", "fx": "고객센터에 전화", "tm": "https://mall.epostbank.go.kr/IPPSKE0000.do", "cf": "https://drive.google.com/file/d/1Iux5ee22n8q4dJScjPcfVl0lBEn1KexU/view", "nt": ""}, {"n": "수협공제", "c": "공제", "p": "https://www.suhyup-bank.com/", "b": "엣지", "t1": "1588-4119", "t2": "-", "t3": "-", "fx": "고객센터에 전화", "tm": "https://www.suhyup-bank.com/ib20/mnu/FPD00127#859", "cf": "https://psmb.suhyup-bank.com/smart/page/dhp/cmn/dhp100200j.jsp?filePathNm=..%2FDIGITALPDF%2Fins_dmnd.pdf", "nt": "수협은행 PDF"}, {"n": "신협공제", "c": "공제", "p": "https://openbank.cu.co.kr/?sub=6000", "b": "엣지", "t1": "1544-3030", "t2": "-", "t3": "-", "fx": "고객센터에 전화", "tm": "https://openbank.cu.co.kr/?sub=6000", "cf": "http://xn--989an19aika.com/pdf/신협.pdf", "nt": "설계사닷컴 자체 호스팅 PDF"}];
+const TOOLS = [{"c": "자동차보험", "t": "대면 간편견적", "u": "https://kpub.knia.or.kr/carInsuranceDisc/insurance/carInsurance.do"}, {"c": "자동차보험", "t": "보험다모아 비교견적", "u": "https://e-insmarket.or.kr/aimt/aimtRealIntro.knia"}, {"c": "자동차보험", "t": "다이렉트 계약 체결", "u": "http://다이렉트비교견적.com"}, {"c": "자동차보험", "t": "할인·할증요인 조회시스템", "u": "https://prem.kidi.or.kr:1443/"}, {"c": "자동차보험", "t": "보험개발원 등록", "u": "https://iics.kidi.or.kr/insuUserReal/viewInsuUserReal.do"}, {"c": "자동차보험", "t": "합의금 계산기(사망,후유장해) - 엑셀", "u": "http://lee2229.hubweb.net/호프만.xlsx"}, {"c": "자동차보험", "t": "합의금 계산기(자손,자상) - 엑셀", "u": "http://lee2229.hubweb.net/자손자상.xlsx"}, {"c": "자동차보험", "t": "과실비율 정보포털", "u": "https://accident.knia.or.kr/"}, {"c": "자동차보험", "t": "카드사 무이자 할부", "u": "https://www.bss-a.co.kr/common_popup/card.html"}, {"c": "자동차보험", "t": "자동차보험 체크리스트(삼성화재) - 한글", "u": "http://lee2229.hubweb.net/자동차보험체크리스트.hwp"}, {"c": "자녀보험", "t": "표준 키/몸무게(자녀보험) - 이미지", "u": "http://lee2229.hubweb.net/icon/adong.jpg"}, {"c": "화재보험", "t": "사업장 화재보험 체크리스트", "u": "https://drive.google.com/file/d/1EonSnWsfZyOFjG7C5QjBbnutYbDyb9Ej/view"}, {"c": "화재보험", "t": "특수건물 정보조회(화재보험)", "u": "https://ucis.kfpa.or.kr/underlist.do"}, {"c": "화재보험", "t": "건축물대장", "u": "https://www.gov.kr/mw/AA020InfoCappView.do?CappBizCD=15000000098&HighCtgCD=A02004002&Mcode=10205"}, {"c": "실손보험", "t": "실손보험 인수기준 확인", "u": "https://kpub.knia.or.kr/productDisc/lostHealth/lostHealthDisclosure.do"}, {"c": "승강기보험", "t": "승강기 정보 열람", "u": "https://www.elevator.go.kr/opn/MainPage.do"}, {"c": "보험교육", "t": "손보(교재/모의고사) - zip 6.4MB", "u": "https://drive.google.com/file/d/1QELPqi9tYbXuAEIytcbAKGq0b7c-g_PS/view"}, {"c": "보험교육", "t": "생보(교재/모의고사) - zip 8.4MB", "u": "https://drive.google.com/file/d/1rAuGAZG4BFECbC1e7pUFbtOnl8QFhsHz/view"}, {"c": "보험교육", "t": "변액(교재/모의고사) - zip 4.7MB", "u": "https://drive.google.com/file/d/1hfKSMkm0jlFwi9ttgpti3EP36k7x9BCI/view"}, {"c": "보험교육", "t": "보험연수원(등록교육, 보수교육)", "u": "https://www.in.or.kr/"}, {"c": "GA 필수 링크", "t": "대리점 협회 상품 비교", "u": "https://pcs.iaa.or.kr/comm/login.do"}, {"c": "GA 필수 링크", "t": "보험사별 등기우편 접수 주소", "u": "http://lee2229.hubweb.net/mail3.htm"}, {"c": "공통 자료", "t": "전국 종합&상급종합병원 리스트 (PDF 9쪽)", "u": "https://drive.google.com/file/d/1UWfIq9Ujw-pavq-fLRrcnJGqsfDeyN1W/view"}, {"c": "공통 자료", "t": "청구서 자동작성 엑셀 (zip 46.7MB, update 26.06.22)", "u": "https://drive.usercontent.google.com/download?id=1Bq6VwM7ZgWezc1tvLlgxAI6-EoYzE-RU&export=download"}, {"c": "공통 자료", "t": "손해보험 치아보험 청구양식 폴더 (13개 PDF)", "u": "https://drive.google.com/drive/folders/1bX5P4mX_aeMeeipb9KgKPpfr_2gXJyX5"}, {"c": "공통 자료", "t": "생명보험 치아보험 청구양식 폴더 (18개 PDF)", "u": "https://drive.google.com/drive/folders/1ykzncdihaEM42L8rGB_ApDvylz_IJtG4"}, {"c": "공통 자료", "t": "보험사 소식지 폴더 (월별/보험사별, 제3자 제공)", "u": "https://drive.google.com/drive/folders/16U8HvvqEaM-TdlwWVCNZ-nBb5JwAZ3Jw"}];
+const COLORS = {"삼성":"#0a4ea3","메리":"#e31e26","DB":"#1a9a47","KB":"#d9a400","현대":"#f36f21","한화":"#f47920","롯데":"#d71920","흥국":"#f7941d","하나":"#008485","NH":"#00a94f","라이":"#0067b1","AIG":"#1f3c88","예별":"#4b2e83","동양":"#0070c0","교보":"#1a5e3a","KDB":"#1c3f94","iM":"#1b5db5","미래":"#f58220","신한":"#0046ff","메트":"#0090da","처브":"#2e2e7a","푸본":"#1d6fb8","BNP":"#00915a","AIA":"#d31145","ABL":"#e4002b","IBK":"#0055a5","MG":"#0f4c81","더케":"#2f6db5","우체":"#d50032","수협":"#1a4fa0","신협":"#005bac"};
+const CAT = ["전체","손해보험","생명보험","공제"];
+let cat = "전체", q = "", favOnly = false;
+const $ = s => document.querySelector(s);
+const ls = { get(){ try{ return JSON.parse(localStorage.getItem('bsm_fav')||'[]'); }catch(e){ return []; } }, set(v){ try{ localStorage.setItem('bsm_fav', JSON.stringify(v)); }catch(e){} } };
+let favs = ls.get();
+const isFav = n => favs.includes(n);
+function toggleFav(n){ favs = isFav(n) ? favs.filter(x=>x!==n) : [...favs, n]; ls.set(favs); toast(isFav(n) ? '즐겨찾기에 추가' : '즐겨찾기 해제'); render(); }
+function logo(n, big){ const k = Object.keys(COLORS).find(k=>n.startsWith(k)); const c = k?COLORS[k]:"#3b4a6b"; const tx = n.replace(/손해보험|화재|생명|라이프|손보|공제|연금보험|해상|금고/g,'').slice(0,3)||n.slice(0,2); return `<div class="lg" style="background:${c}">${tx}</div>`; }
+function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('on'); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('on'),1600); }
+function copy(txt){ const done=()=>toast('복사됨: '+txt); if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done).catch(()=>fallback()); } else fallback(); function fallback(){ const ta=document.createElement('textarea'); ta.value=txt; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy'); done();}catch(e){ toast('길게 눌러 복사하세요'); } ta.remove(); } }
+const isTel = v => /^[0-9][0-9\-~]+$/.test(v||'');
+function telHref(v){ return 'tel:' + v.split('~')[0].replace(/[^0-9]/g,''); }
+
+function renderChips(){
+  const counts = {"전체":INS.length}; CAT.slice(1).forEach(c=>counts[c]=INS.filter(i=>i.c===c).length);
+  $('#chips').innerHTML = CAT.map(c=>`<button class="chip ${cat===c&&!favOnly?'on':''}" data-cat="${c}">${c} ${counts[c]}</button>`).join('') + `<button class="chip ${favOnly?'on':''}" data-cat="__fav">⭐ 즐겨찾기 ${favs.length}</button>`;
+}
+function renderList(){
+  const items = INS.map((i,idx)=>({...i,idx})).filter(i => (favOnly ? isFav(i.n) : (cat==="전체"||i.c===cat)) && i.n.replace(/\s/g,'').toLowerCase().includes(q));
+  $('#list').innerHTML = items.length ? items.map(i=>`
+    <div class="card">
+      <a href="#i-${i.idx}" style="display:contents">${logo(i.n)}<div class="tx"><b>${i.n}</b><small>${i.t1} · 팩스 ${i.fx}</small></div></a>
+      <button class="st ${isFav(i.n)?'on':''}" data-fav="${i.n}" aria-label="즐겨찾기">${isFav(i.n)?'★':'☆'}</button>
+    </div>`).join('') : `<div class="empty">${favOnly?'별표를 눌러 자주 쓰는 보험사를 추가하세요':'검색 결과가 없습니다'}</div>`;
+}
+function tile(label, v, fax){
+  if(fax && isTel(v)) return `<div class="tile"><div class="t">${label}</div><div class="v">${v}</div><div class="act"><button data-copy="${v}">📠 번호 복사</button></div></div>`;
+  if(!isTel(v)) return `<div class="tile dis"><div class="t">${label}</div><div class="v" style="font-family:var(--font);font-size:13px">${v||'-'}</div></div>`;
+  return `<div class="tile"><div class="t">${label}</div><div class="v">${v}</div><div class="act"><a href="${telHref(v)}"><button>📞 전화</button></a><button data-copy="${v}">복사</button></div></div>`;
+}
+function renderDetail(idx){
+  const i = INS[idx]; if(!i) return go('list');
+  $('#d-name').textContent = i.n; $('#d-sub').textContent = `${i.c} · ${i.b} 지원`;
+  const dental = i.dt ? `<a class="row" href="${i.dt}" target="_blank" rel="noopener">치아보험 청구양식 <span class="bd">PDF</span><span class="r">받기 ›</span></a>` : '';
+  const extra = (i.nt||'').split(';').map(s=>s.trim()).filter(Boolean).map(s=>{ const m=s.match(/^(.*?):\s*(https?:\/\/\S+)$/); return m ? `<a class="row" href="${m[2]}" target="_blank" rel="noopener">${m[1]}<span class="r">열기 ›</span></a>` : `<div class="note">${s}</div>`; }).join('');
+  $('#d-body').innerHTML = `
+    <div class="hero">${logo(i.n,1)}<div style="min-width:0"><b>${i.n}</b><small>${i.p.replace(/^https?:\/\//,'')}</small></div><button class="st ${isFav(i.n)?'on':''}" data-fav="${i.n}" aria-label="즐겨찾기">${isFav(i.n)?'★':'☆'}</button></div>
+    <div class="grid">
+      <a class="tile p" href="${i.p}" target="_blank" rel="noopener"><div class="t">전산 접속</div><div class="v">영업포털 열기 ›</div></a>
+      <a class="tile g" href="${i.cf}" target="_blank" rel="noopener"><div class="t">보험금 청구서</div><div class="v">${/drive\.google/.test(i.cf)?'PDF 받기 ›':'보험사 서식 ›'}</div></a>
+      ${tile('고객센터', i.t1)}${tile('인콜 모니터링', i.t2)}${tile('전산 헬프데스크', i.t3)}${tile('보험금 청구팩스', i.fx, true)}
+    </div>
+    <div class="sec">자료 · 링크</div>
+    <div class="rows">
+      <a class="row" href="${i.tm}" target="_blank" rel="noopener">약관 / 상품공시 확인<span class="r">열기 ›</span></a>
+      ${dental}${extra}
+    </div>
+    <div class="sec">자주 쓰는 동작</div>
+    <div class="rows">
+      <button class="row" data-copy="${i.fx}">📠 청구팩스 번호 복사<span class="r">복사</span></button>
+      <button class="row" data-copy="${i.n} 보험금 청구서: ${i.cf}">💬 청구서 링크 복사 (카톡으로 고객에게)<span class="r">복사</span></button>
+    </div>`;
+}
+function renderTools(){
+  const cats = [...new Set(TOOLS.map(t=>t.c))];
+  const icon = {"자동차보험":"🚗","자녀보험":"👶","화재보험":"🔥","실손보험":"🏥","승강기보험":"🛗","보험교육":"📚","GA 필수 링크":"🏢","공통 자료":"📁"};
+  $('#t-body').innerHTML = cats.map(c=>`<div class="tool ${c==='공통 자료'?'hl':''}"><b>${icon[c]||'🔗'} ${c}</b><div class="ch">${TOOLS.filter(t=>t.c===c).map(t=>`<a href="${t.u}" target="_blank" rel="noopener">${t.t}</a>`).join('')}</div></div>`).join('');
+}
+function go(h){ location.hash = h; }
+function render(){
+  const h = (location.hash||'#list').slice(1);
+  let v = 'list';
+  if(h.startsWith('i-')) v='detail'; else if(h==='tools') v='tools'; else if(h==='fav'){ v='list'; }
+  favOnly = (h==='fav');
+  document.querySelectorAll('.view').forEach(s=>s.classList.toggle('on', s.id==='v-'+v));
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on', b.dataset.go===(v==='detail'?'list':h==='fav'?'fav':v)));
+  if(v==='list'){ renderChips(); renderList(); }
+  if(v==='detail') renderDetail(Number(h.slice(2)));
+  if(v==='tools') renderTools();
+  if(v!=='list') window.scrollTo(0,0);
+}
+document.addEventListener('click', e=>{
+  const b = e.target.closest('[data-fav]'); if(b){ e.preventDefault(); toggleFav(b.dataset.fav); return; }
+  const c = e.target.closest('[data-copy]'); if(c){ copy(c.dataset.copy); return; }
+  const ch = e.target.closest('[data-cat]'); if(ch){ if(ch.dataset.cat==='__fav'){ go('fav'); } else { cat = ch.dataset.cat; if(favOnly) go('list'); else render(); } return; }
+  const nb = e.target.closest('[data-go]'); if(nb){ go(nb.dataset.go); }
+});
+$('#q').addEventListener('input', e=>{ q = e.target.value.replace(/\s/g,'').toLowerCase(); renderList(); });
+window.addEventListener('hashchange', render);
+render();
+</script>
+
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}</script>
+</body>
+</html>
