@@ -1,11 +1,30 @@
 {
  "contact": "광고문의 010-0000-0000",
- "left": [
+ "top": [
+  {
+   "img": "ads/haebaragi.png",
+   "url": "https://pf.kakao.com/_qVEQG",
+   "alt": "해바라기 간병 - 가족간병·간병인등록"
+  },
   {
    "img": "ads/ad01.png",
    "url": "https://supermanbohum.github.io/boheom-insurers/",
    "alt": "보험슈퍼맨 설계사 모집"
+  }
+ ],
+ "bottom": [
+  {
+   "img": "ads/ad16.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "보험슈퍼맨 단톡방 설계사 3,000명"
   },
+  {
+   "img": "ads/ad05.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "청구서 자동작성 29개 보험사 한 번에"
+  }
+ ],
+ "left": [
   {
    "img": "ads/ad02.png",
    "url": "https://supermanbohum.github.io/boheom-insurers/",
@@ -21,13 +40,6 @@
    "url": "https://supermanbohum.github.io/boheom-insurers/",
    "alt": "DB 고객 제공 유전자 분석 상담 DB"
   },
-  {
-   "img": "ads/ad05.png",
-   "url": "https://supermanbohum.github.io/boheom-insurers/",
-   "alt": "청구서 자동작성 29개 보험사 한 번에"
-  }
- ],
- "right": [
   {
    "img": "ads/ad06.png",
    "url": "https://supermanbohum.github.io/boheom-insurers/",
@@ -52,13 +64,6 @@
    "img": "ads/ad10.png",
    "url": "https://supermanbohum.github.io/boheom-insurers/",
    "alt": "보험 유튜브 대행 영상 1편 5만원부터"
-  }
- ],
- "top": [
-  {
-   "img": "ads/haebaragi.png",
-   "url": "https://pf.kakao.com/_qVEQG",
-   "alt": "해바라기 간병 - 가족간병·간병인등록"
   },
   {
    "img": "ads/ad11.png",
@@ -81,11 +86,11 @@
    "alt": "화재보험 특화 GA 사업장 화재 전문"
   }
  ],
- "bottom": [
+ "right": [
   {
-   "img": "ads/ad16.png",
+   "img": "ads/ad15.png",
    "url": "https://supermanbohum.github.io/boheom-insurers/",
-   "alt": "보험슈퍼맨 단톡방 설계사 3,000명"
+   "alt": "광고 15"
   },
   {
    "img": "ads/ad17.png",
@@ -106,6 +111,41 @@
    "img": "ads/ad20.png",
    "url": "https://supermanbohum.github.io/boheom-insurers/",
    "alt": "보험 세무 상담 보험금 상속·증여세"
+  },
+  {
+   "img": "ads/ad21.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "운전자보험 특판"
+  },
+  {
+   "img": "ads/ad22.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "보험 리모델링 툴"
+  },
+  {
+   "img": "ads/ad23.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "종신보험 화법 강의"
+  },
+  {
+   "img": "ads/ad24.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "암보험 비교표 제공"
+  },
+  {
+   "img": "ads/ad25.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "설계사 세금 신고"
+  },
+  {
+   "img": "ads/ad26.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "고객 선물 제작"
+  },
+  {
+   "img": "ads/ad27.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "상조·장례 제휴"
   }
  ]
 }
