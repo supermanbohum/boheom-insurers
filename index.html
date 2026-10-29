@@ -106,8 +106,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .adstrip{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
 #ads-top{padding-top:12px}#ads-bottom{padding-block:8px 24px}
 @media (min-width:1080px){
-  .shell{max-width:none;grid-template-columns:minmax(200px,1fr) minmax(0,560px) minmax(200px,1fr);gap:20px;align-items:start;padding-inline:16px}
-  .rail{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;padding-top:12px;align-content:start}
+  .shell{max-width:1120px;grid-template-columns:230px minmax(0,560px) 230px;gap:24px;align-items:start;padding-inline:16px}
+  .rail{display:grid;grid-template-columns:1fr;gap:10px;padding-top:12px;align-content:start}
+}
+@media (min-width:1560px){
+  .shell{max-width:1600px;grid-template-columns:480px minmax(0,560px) 480px;gap:20px}
+  .rail{grid-template-columns:1fr 1fr}
 }
 </style>
 
@@ -146,7 +150,7 @@ const COLORS = {"삼성":"#0a4ea3","메리":"#e31e26","DB":"#1a9a47","KB":"#d9a4
 const ADS_DEFAULT = {"left":[],"right":[],"contact":"광고문의 010-0000-0000"};
 function renderAds(ads){
   const slot=(a,n)=> a && a.img ? `<a class="ad" href="${a.url||'#'}" target="_blank" rel="noopener"><img src="${a.img}" alt="${a.alt||'광고'}" loading="lazy"></a>` : `<div class="ad empty"><b>광고 ${n}</b><span>${ads.contact||''}</span></div>`;
-  const zones=[['left','#rail-l',18],['right','#rail-r',18],['top','#ads-top',2],['bottom','#ads-bottom',2]];
+  const zones=[['left','#rail-l',12],['right','#rail-r',12],['top','#ads-top',2],['bottom','#ads-bottom',2]];
   let n=0;
   zones.forEach(([z,sel,max])=>{ const el=$(sel); if(!el) return; const list=(ads[z]||[]).slice(0,max); while(list.length<max) list.push(null); el.innerHTML=list.map(a=>slot(a,++n)).join(''); });
 }
