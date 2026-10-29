@@ -56,6 +56,11 @@
  ],
  "top": [
   {
+   "img": "ads/haebaragi.png",
+   "url": "https://pf.kakao.com/_qVEQG",
+   "alt": "해바라기 간병 - 가족간병·간병인등록"
+  },
+  {
    "img": "ads/ad11.png",
    "url": "https://supermanbohum.github.io/boheom-insurers/",
    "alt": "정착지원금 500만원 신입 설계사 환영"
@@ -74,11 +79,6 @@
    "img": "ads/ad14.png",
    "url": "https://supermanbohum.github.io/boheom-insurers/",
    "alt": "화재보험 특화 GA 사업장 화재 전문"
-  },
-  {
-   "img": "ads/ad15.png",
-   "url": "https://supermanbohum.github.io/boheom-insurers/",
-   "alt": "치아보험 영업 노하우 무료 세미나"
   }
  ],
  "bottom": [
