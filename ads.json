@@ -1,0 +1,17 @@
+{
+ "contact": "광고문의 010-0000-0000",
+ "left": [
+  {
+   "img": "ads/sample1.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "보험슈퍼맨 설계사 모집"
+  }
+ ],
+ "right": [
+  {
+   "img": "ads/sample2.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "광고 자리"
+  }
+ ]
+}
