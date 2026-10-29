@@ -2,16 +2,106 @@
  "contact": "광고문의 010-0000-0000",
  "left": [
   {
-   "img": "ads/sample1.png",
+   "img": "ads/ad01.png",
    "url": "https://supermanbohum.github.io/boheom-insurers/",
    "alt": "보험슈퍼맨 설계사 모집"
+  },
+  {
+   "img": "ads/ad02.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "GA 지사장 모집 사무실·전산 무상 지원"
+  },
+  {
+   "img": "ads/ad03.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "무료 보험교육 손보·생보 자격시험 대비"
+  },
+  {
+   "img": "ads/ad04.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "DB 고객 제공 유전자 분석 상담 DB"
+  },
+  {
+   "img": "ads/ad05.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "청구서 자동작성 29개 보험사 한 번에"
+  },
+  {
+   "img": "ads/ad06.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "상령일 고객 안내 카톡 자동발송 서비스"
+  },
+  {
+   "img": "ads/ad07.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "법인 컨설팅 교육 CEO 플랜 · 가업승계"
+  },
+  {
+   "img": "ads/ad08.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "실손 청구 대행 병원 서류 수거부터 접수까지"
+  },
+  {
+   "img": "ads/ad09.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "설계사 명함 제작 100장 9,900원"
+  },
+  {
+   "img": "ads/ad10.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "보험 유튜브 대행 영상 1편 5만원부터"
   }
  ],
  "right": [
   {
-   "img": "ads/sample2.png",
+   "img": "ads/ad11.png",
    "url": "https://supermanbohum.github.io/boheom-insurers/",
-   "alt": "광고 자리"
+   "alt": "정착지원금 500만원 신입 설계사 환영"
+  },
+  {
+   "img": "ads/ad12.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "보험 블로그 마케팅 상위노출 보장"
+  },
+  {
+   "img": "ads/ad13.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "자동차보험 비교 다이렉트 계약 수수료"
+  },
+  {
+   "img": "ads/ad14.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "화재보험 특화 GA 사업장 화재 전문"
+  },
+  {
+   "img": "ads/ad15.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "치아보험 영업 노하우 무료 세미나"
+  },
+  {
+   "img": "ads/ad16.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "보험슈퍼맨 단톡방 설계사 3,000명"
+  },
+  {
+   "img": "ads/ad17.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "태블릿 전자청약 보험사 전산 세팅 대행"
+  },
+  {
+   "img": "ads/ad18.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "간병보험 집중 교육 치매·장기요양 상담법"
+  },
+  {
+   "img": "ads/ad19.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "고객관리 시트 제공 구글시트 무료 템플릿"
+  },
+  {
+   "img": "ads/ad20.png",
+   "url": "https://supermanbohum.github.io/boheom-insurers/",
+   "alt": "보험 세무 상담 보험금 상속·증여세"
   }
  ]
 }
